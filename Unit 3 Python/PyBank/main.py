@@ -1,5 +1,7 @@
 import csv
-import os
 
-filepath = os.path.join("budget_data.csv")
-print(filepath)
+with open('budget_data.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        print(row[0])
+    
