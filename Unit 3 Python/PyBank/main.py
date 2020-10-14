@@ -1,18 +1,25 @@
 import csv
 
+months = []
+profit_loss = []
+
+total_months = 0
+totalrev = 0
+previous_month = 0
+current_month = 0
+
 with open('budget_data.csv') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-
-    totalrev = 0
-
     header = next(csvreader)
-    row_count = sum(1 for row in csvreader)
     
-    for row in csvreader:
+    for row in csvreader:   
 
-        count += 1
+        total_months += 1
         revenue = float(row[1])     
         totalrev += revenue
 
-print(f"Total Months: {row_count}")
-print(totalrev)
+
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {total_months}")    
+print(f"Total: ${totalrev}")
