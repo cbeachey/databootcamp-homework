@@ -51,7 +51,7 @@ print(f'Greatest Decrease in Profits: {worst_month_final} (${greatest_decrease})
 
 
 
-with open('Output.csv', 'w') as outputfile: 
+with open('Output.csv', 'w', newline='') as outputfile: 
     csvwriter = csv.writer(outputfile)
     csvwriter.writerow(["Financial Analysis"])
     csvwriter.writerow(["----------------------------"])
