@@ -46,4 +46,18 @@ print("----------------------------")
 print(f"Total Months: {total_months}")    
 print(f"Total: ${totalrev}")
 print(f"Average Change: {avg_profit_loss}")
-print(best_month_final)
+print(f'Greatest Increase in Profits: {best_month_final} (${greatest_increase})')
+print(f'Greatest Decrease in Profits: {worst_month_final} (${greatest_decrease})')
+
+
+
+with open('Output.csv', 'w') as outputfile: 
+    csvwriter = csv.writer(outputfile)
+    csvwriter.writerow(["Financial Analysis"])
+    csvwriter.writerow(["----------------------------"])
+    csvwriter.writerow([f"Total Months: {total_months}"])
+    csvwriter.writerow([f"Total: ${totalrev}"])
+    csvwriter.writerow([f"Average Change: {avg_profit_loss}"])
+    csvwriter.writerow([f'Greatest Increase in Profits: {best_month_final} (${greatest_increase})'])
+    csvwriter.writerow([f'Greatest Decrease in Profits: {worst_month_final} (${greatest_decrease})'])
+  
