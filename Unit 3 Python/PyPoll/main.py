@@ -27,9 +27,11 @@ with open('election_data.csv') as csvfile:
     vote_percentages = {}
     for key in vote_count.keys():
         vote_list = []
-        vote_list.append(vote_count[key]/total_votes * 100)
+        percentage = round((vote_count[key]/total_votes * 100), 2)
+        vote_list.append(percentage)
         vote_list.append(vote_count[key])
         vote_percentages[key] = vote_list
+        
 
 winner = max((candidate), key = candidate.count)
 
@@ -39,7 +41,7 @@ print(f'Total Votes: {total_votes}')
 print(f'-------------------------')
 #print(vote_count)
 for key in vote_percentages:
-    print(f"{key}: {vote_percentages[key][0]}% ({vote_percentages[key][1]})")
+    print(f"{key}: {vote_percentages[key][0]}% ({vote_percentages[key][1]})") 
 print(f'-------------------------')
 print(f'Winner: {winner}')
 print(f'-------------------------')
