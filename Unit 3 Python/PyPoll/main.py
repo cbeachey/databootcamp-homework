@@ -43,3 +43,16 @@ for key in vote_percentages:
 print(f'-------------------------')
 print(f'Winner: {winner}')
 print(f'-------------------------')
+
+
+with open('Output.csv', 'w', newline='') as outputfile: 
+    csvwriter = csv.writer(outputfile)
+    csvwriter.writerow([f'Election Results'])
+    csvwriter.writerow([f'-------------------------'])
+    csvwriter.writerow([f'Total Votes: {total_votes}']) 
+    csvwriter.writerow([f'-------------------------'])
+    for key in vote_percentages:
+        csvwriter.writerow([f"{key}: {vote_percentages[key][0]}% ({vote_percentages[key][1]})"])
+    csvwriter.writerow([f'-------------------------'])
+    csvwriter.writerow([f'Winner: {winner}'])
+    csvwriter.writerow([f'-------------------------'])
