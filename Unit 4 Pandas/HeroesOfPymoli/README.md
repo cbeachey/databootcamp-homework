@@ -11,3 +11,5 @@ The final report [IPYNB](https://github.com/cbeachey/databootcamp-homework/blob/
 * Top Spenders
 * Most Popular Items
 * Most Profitable Items
+
+After observing the trends in the above data, I drew three final [conclusions](https://github.com/cbeachey/databootcamp-homework/blob/master/Unit%204%20Pandas/HeroesOfPymoli/Conclusion/Final%20Conclusions.md).
