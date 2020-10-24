@@ -1,4 +1,4 @@
-#Heroes of Pymoli: Observable Trends
+# Heroes of Pymoli: Observable Trends
 
 1. The Heroes of Pymoli players are predominantly male. The Gender Demographics showed that 84.03% of the players were male. Although the players are largely male, their average purchase price is lower than the female and non-disclosed players. 
 
