@@ -16,12 +16,21 @@ SELECT first_name, last_name, hire_date
 FROM employees
 WHERE hire_date LIKE '%1986';
 
-SELECT * from employees
-
-SELECT * from employees
  
 -- 3. List the manager of each department with the following information: department number, department name, 
 --    the manager's employee number, last name, first name.
+
+SELECT 
+	departments.dept_name AS "Dept Name",
+	dept_manager.dept_no AS "Dept Number",
+	employees.emp_no AS "Emp Number",
+	employees.first_name AS "First Name",
+	employees.last_name AS "Last Name"
+FROM departments
+join dept_manager 
+on dept_manager.dept_no = departments.dept_no 
+JOIN employees
+ON employees.emp_no = dept_manager.emp_no
 
 -- 4. List the department of each employee with the following information: employee number, last name, 
 --    first name, and department name.
