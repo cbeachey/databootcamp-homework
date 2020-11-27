@@ -56,6 +56,19 @@ AND last_name LIKE 'B%';
 -- 6. List all employees in the Sales department, including their employee number, last name, 
 --    first name, and department name.
 
+SELECT 
+	employees.emp_no AS "Emp Number",
+	employees.first_name AS "First Name",
+	employees.last_name AS "Last Name",
+	departments.dept_name AS "Department Name"
+FROM employees
+JOIN department_employees
+ON department_employees.emp_no = employees.emp_no
+JOIN departments
+ON departments.dept_no = department_employees.dept_no
+WHERE departments.dept_name = 'Sales' 
+OR departments.dept_name = 'Development';
+
 
 -- 7. List all employees in the Sales and Development departments, including their employee number, 
 --    last name, first name, and department name.
