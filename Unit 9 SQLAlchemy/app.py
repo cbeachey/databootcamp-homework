@@ -24,9 +24,17 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def main():
-    return("welcome")
-
+def home():
+    return(f"Welcome to Surf's Up Hawaii Climate App! This is the Home Page<br/>"
+    f"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ <br/>"
+    f"Available routes: <br/>"
+    f"/api/v1.0/precipitation  -> A precipitation analysis  <br/>"
+    f"/api/v1.0/stations   -> A list of all of the stations <br/>"
+    f"/api/v1.0/tobs   -> Temperature observations of the most active station for the last year of data <br/>"
+    f"/api/v1.0/<start>   "
+    f"/api/v1.0/<start>/<end>    "
+)
+   
 
 @app.route("/api/v1.0/precipitation")
 def names(): 
