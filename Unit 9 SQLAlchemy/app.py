@@ -31,8 +31,8 @@ def home():
     f"/api/v1.0/precipitation  -> A precipitation analysis  <br/>"
     f"/api/v1.0/stations   -> A list of all of the stations <br/>"
     f"/api/v1.0/tobs   -> Temperature observations of the most active station for the last year of data <br/>"
-    f"/api/v1.0/<start>   "
-    f"/api/v1.0/<start>/<end>    "
+    f"/api/v1.0/2017-02-23   <br/>"
+    f"/api/v1.0/2017-02-232017-03-01    "
 )
    
 
@@ -54,7 +54,7 @@ def stations():
     active = session.query(Measurement.station, func.count(Measurement.station)).group_by(Measurement.station)\
                                                                 .order_by(func.count(Measurement.station).desc()).all()
 
-    active_list = dict(active)
+    active_list = list(active)
     return jsonify(active_list)
 
 
@@ -66,16 +66,30 @@ def Tobs():
                 filter(Measurement.date >= one_year).\
                 order_by(Measurement.date).all()
 
-    tobs_list = dict(tobs)
+    tobs_list = list(tobs)
     return jsonify(tobs_list)
 
-#@app.route("/api/v1.0/<start>")
+
+@app.route("/api/v1.0/<start>")
+def start_date(start):
+        start_date = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+                filter(Measurement.date >= start).\
+                group_by(Measurement.date).all()
+
+        start_list = list(start_date)
+        return jsonify(start_list)
 
 
+@app.route("/api/v1.0/start>/<end>")
+def start_end_date(start, end):
+        start_end_date = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+                filter(Measurement.date >= start).\
+                filter(Measurement.date <= end).\
+                group_by(Measurement.date).all()
+      
+        start_end_date_list = list(start_end_date)
+        return jsonify(start_end_date_list)
 
-#@app.route("/api/v1.0/<start>/<end>")
 
-
-
-if __name__ == '__main__': 
+if __name__ == '__main__':
     app.run(debug=True)
