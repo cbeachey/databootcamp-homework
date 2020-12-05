@@ -37,13 +37,14 @@ def home():
    
 
 @app.route("/api/v1.0/precipitation")
-def names(): 
-    session = Session(engine)
-    results = session.query(Measurement.date).all()
-    session.close()
-    return jsonify(results)
+def precipitation(): 
+    yr = dt.date(2017,8,23) - dt.timedelta(days=365)
+    prcp = prcp_data = session.query(Measurement.date, Measurement.prcp).\
+                    filter(Measurement.date >= yr).\
+                    order_by(Measurement.date).all()
 
-
+    prcp_list = dict(prcp)  
+    return jsonify(prcp_list)
 
 #@app.route("/api/v1.0/stations")
 
