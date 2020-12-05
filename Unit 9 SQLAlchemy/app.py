@@ -43,10 +43,23 @@ def precipitation():
                     filter(Measurement.date >= yr).\
                     order_by(Measurement.date).all()
 
+    #create dictionary
     prcp_list = dict(prcp)  
     return jsonify(prcp_list)
 
-#@app.route("/api/v1.0/stations")
+
+
+@app.route("/api/v1.0/stations")
+def stations():
+    active = session.query(Measurement.station, func.count(Measurement.station)).group_by(Measurement.station)\
+                                                                .order_by(func.count(Measurement.station).desc()).all()
+
+    active_list = dict(active)
+    return jsonify(active_list)
+
+
+
+
 
 
 #@app.route("/api/v1.0/tobs")
