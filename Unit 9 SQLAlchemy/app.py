@@ -21,7 +21,7 @@ Measurement = Base.classes.measurement
 Station = Base.classes.station
 
 app = Flask(__name__)
-
+session = Session(engine)
 
 @app.route("/")
 def home():
