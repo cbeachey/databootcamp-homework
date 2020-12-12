@@ -7,17 +7,13 @@
                 padding: 10px
 }
 
-
-.navbar-nav {
-    position: absolute;
-    right: 8%;
-    font-size: small;
-  }
+.dropdown-menu {
+    margin: 0;
+}
 
 /* image styling */
 
 .img-thumbnail {border: none}
-
 
 
 
