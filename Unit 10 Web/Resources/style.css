@@ -8,6 +8,11 @@
 }
 
 
+.navbar-nav {
+    position: absolute;
+    right: 8%;
+    font-size: small;
+  }
 
 /* image styling */
 
@@ -56,14 +61,17 @@ body {background-color: lightgrey;
 
 
 
-@media(max-width:767px){
-.navbar.bg-dark{
-            background-color: rgb(67, 97, 179)!important;    
-                }
-            
 
-.navbar{
+@media(max-width:767px){
+        .navbar.bg-dark{
+            background-color: rgb(23, 68, 151)!important;    
+        }
+    
+        .navbar-collapse{
+            background-color: #070e14;
+        }
+        .navbar{
             padding:inherit;
-                }
-            }
+        }
+    }
     
