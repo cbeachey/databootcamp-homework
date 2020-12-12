@@ -1,6 +1,6 @@
 # Web Design Homework - Web Visualization Dashboard (Latitude)
 
-GitHub Pages Link 
+GitHub Pages Link :  https://cbeachey.github.io/web/index.html 
 
 
 ## Background
