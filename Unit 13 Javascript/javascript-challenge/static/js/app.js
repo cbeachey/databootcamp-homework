@@ -18,19 +18,18 @@ data.forEach((ufoSightings) => {
    });
  });
 
-
+// date form
 var dateForm = d3.select("#datetime")
     function handleChange(event) {
     var inputDate = d3.event.target.value;
 };
 dateForm.on("change",handleChange);
 
- //Filter the date
+// filter the date
 var button = d3.select("#filter-btn");
 
 //Event Handler
 button.on("click", runEnter);    
-
 
 
 //define RunEnter
