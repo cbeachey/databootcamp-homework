@@ -5,7 +5,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 // check console
-console.log(data);
+// console.log(data);
 
 // For Each statement to append the data
 data.forEach((ufoSightings) => {
