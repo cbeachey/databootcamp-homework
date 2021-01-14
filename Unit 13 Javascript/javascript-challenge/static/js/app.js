@@ -17,5 +17,26 @@ data.forEach((ufoSightings) => {
      cell.text(value);
    });
  });
- 
-    
+
+
+ //Filter the date
+var button = d3.select("#filter-btn");
+
+//Event Handler
+button.on("click", runEnter);    
+
+//define RunEnter
+function runEnter() {
+    var inputDate = dateForm.property("value");
+    var filteredData = data.filter(ufoSightings => ufoSightings.datetime == inputDate);
+    if(filteredData.length !== 0) {
+        d3.select("tbody").selectAll("tr").remove();
+        filteredData.forEach((ufoSightings) => {
+            var row = tbody.append("tr");
+            Object.entries(ufoSightings).forEach(([key, value]) => {
+              var cell = row.append("td");
+              cell.text(value)
+            });
+        });
+    };
+};
