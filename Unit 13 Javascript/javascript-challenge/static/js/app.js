@@ -47,3 +47,7 @@ function runEnter() {
         });
     };
 };
+
+
+// reset the form
+var resetButton = d3.select
