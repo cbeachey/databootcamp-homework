@@ -1,4 +1,8 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
+// reference to table body
+var tbody = d3.select("tbody");
+
+// check console
+console.log(data)
