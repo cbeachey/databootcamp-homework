@@ -8,8 +8,6 @@ var tbody = d3.select("tbody");
 // console.log(data);
 
 // For Each statement to append the data
-
-
     data.forEach((ufoSightings) => {
     // console.log(ufoSightings);
         var row = tbody.append("tr");
@@ -27,20 +25,14 @@ var dateForm = d3.select("#datetime")
 };
 dateForm.on("change",handleChange);
 
-// state form
-var stateForm = d3.select("#statetime")
-    function handleChange(event) {
-    var inputState = d3.event.target.value;
-};
-stateForm.on("change",handleChange);
 
 // filter the date
 var button = d3.select("#filter-btn");
-//var button1 = d3.select("#filter-btn");
+
 
 //Event Handler
-button.on("click", runEnter, runEnter2);    
-//button1.on("click", runEnter2);
+button.on("click", runEnter);    
+
 
 //define RunEnter
 function runEnter() {
@@ -58,19 +50,4 @@ function runEnter() {
     };
 };
 
-
-function runEnter2() {
-    var inputState = stateForm.property("value");
-    var filteredData = data.filter(ufoSightings => ufoSightings.state == inputState);
-    if(filteredData.length !== 0) {
-        d3.select("tbody").selectAll("tr").remove();
-        filteredData.forEach((ufoSightings) => {
-            var row = tbody.append("tr");
-            Object.entries(ufoSightings).forEach(([key, value]) => {
-              var cell = row.append("td");
-              cell.text(value)
-            });
-        });
-    };
-};
 
