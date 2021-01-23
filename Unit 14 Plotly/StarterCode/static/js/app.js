@@ -22,7 +22,7 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
   // Connection to json
   d3.json("samples.json").then((data) => {
-      
+    // Assign data to variables  
     var samples = data.samples;
     var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
@@ -31,6 +31,8 @@ function buildCharts(sample) {
     var sample_values = result.sample_values;
 
     var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
+    
+    //Set x and y values for bar graph
     var barData = [
       {
         y: yticks,
@@ -42,12 +44,12 @@ function buildCharts(sample) {
     ];
 
     var barLayout = {
-      margin: { t: 30, l: 150 }
+      margin: { t: 20, l: 130 }
     };
 
   Plotly.newPlot("bar", barData, barLayout);
   });
-}
+};
 
 function init() {
     // Grab a reference to the dropdown select element
