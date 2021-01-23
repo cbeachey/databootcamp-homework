@@ -44,9 +44,6 @@ function buildCharts(sample) {
 
     var barLayout = {
       margin: { t: 20, l: 130 }
-
-
-    
     };
 
   Plotly.newPlot("bar", barData, barLayout);
