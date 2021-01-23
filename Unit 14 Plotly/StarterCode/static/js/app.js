@@ -48,6 +48,7 @@ function buildCharts(sample) {
 
   Plotly.newPlot("bar", barData, barLayout);
 
+  // Build Bubble graph
   var bubbleData = [{
     x: otu_ids,
     y: sample_values,
@@ -60,6 +61,7 @@ function buildCharts(sample) {
     }
   }];
 
+  // Bubble layout adjustments to x-axis label and title
   var bubbleLayout = {
     title: "Bacteria Cultures",
     xaxis: { title: "OTU ID" },
@@ -68,7 +70,6 @@ function buildCharts(sample) {
 
   Plotly.newPlot("bubble", bubbleData, bubbleLayout)
   });
-
 };
 
 function init() {
@@ -93,4 +94,11 @@ function init() {
     });
   }
 
-  init();
+// Fetch selected data when new sample is selected
+function optionChanged(newSample) {
+  buildCharts(newSample);
+  buildMetadata(newSample);
+  };
+
+  //Initialize
+init();
