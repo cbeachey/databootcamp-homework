@@ -47,7 +47,8 @@ function buildCharts(sample) {
     var barLayout = {
       margin: { t: 20, l: 130 }
     };
-
+    
+    //Plot bar graph
   Plotly.newPlot("bar", barData, barLayout);
 
   // Build Bubble graph
