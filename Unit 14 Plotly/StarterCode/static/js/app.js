@@ -17,6 +17,7 @@ function buildMetadata(sample) {
     });
   }
 
+  
 //Build Horizontal Bar Chart
 function buildCharts(sample) {
   // Connection to json
