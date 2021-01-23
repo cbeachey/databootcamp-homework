@@ -17,7 +17,7 @@ function buildMetadata(sample) {
     });
   }
 
-  
+
 //Build Horizontal Bar Chart
 function buildCharts(sample) {
   // Connection to json
@@ -43,6 +43,7 @@ function buildCharts(sample) {
       }
     ];
 
+    //Set layout of graph
     var barLayout = {
       margin: { t: 20, l: 130 }
     };
