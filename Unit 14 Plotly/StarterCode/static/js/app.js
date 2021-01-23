@@ -45,10 +45,34 @@ function buildCharts(sample) {
 
     var barLayout = {
       margin: { t: 20, l: 130 }
+
+
+    
     };
 
   Plotly.newPlot("bar", barData, barLayout);
+
+  var bubbleData = [{
+    x: otu_ids,
+    y: sample_values,
+    text: otu_labels,
+    mode: "markers",
+    marker: {
+      size: sample_values,
+      color: otu_ids,
+      colorscale: "Earth"
+    }
+  }];
+
+  var bubbleLayout = {
+    title: "Bacteria Cultures",
+    xaxis: { title: "OTU ID" },
+    hovermode: "closest"
+  }
+
+  Plotly.newPlot("bubble", bubbleData, bubbleLayout)
   });
+
 };
 
 function init() {
