@@ -47,8 +47,8 @@ function buildCharts(sample) {
     var barLayout = {
       margin: { t: 20, l: 130 }
     };
-    
-    //Plot bar graph
+
+  //Plot bar graph
   Plotly.newPlot("bar", barData, barLayout);
 
   // Build Bubble graph
@@ -71,6 +71,7 @@ function buildCharts(sample) {
     hovermode: "closest"
   }
 
+  //Plot bubble graph
   Plotly.newPlot("bubble", bubbleData, bubbleLayout)
   });
 };
@@ -103,5 +104,5 @@ function optionChanged(newSample) {
   buildMetadata(newSample);
   };
 
-  //Initialize
+//Initialize
 init();
