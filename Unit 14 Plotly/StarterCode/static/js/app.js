@@ -1,38 +1,34 @@
+//Metadata and connection
 function buildMetadata(sample) {
-    d3.json("samples.json").then((data) => {
+  //Build connection with D3  
+  d3.json("samples.json").then((data) => {
+      
       var metadata = data.metadata;
-      // Filter the data for the object with the desired sample number
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
-      // Use d3 to select the panel with id of `#sample-metadata`
+   
       var PANEL = d3.select("#sample-metadata");
-  
-      // Use `.html("") to clear any existing metadata
       PANEL.html("");
   
       // Use `Object.entries` to add each key and value pair to the panel
-      // Hint: Inside the loop, you will need to use d3 to append new
-      // tags for each key-value in the metadata.
       Object.entries(result).forEach(([key, value]) => {
         PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
       });
-  
-      // BONUS: Build the Gauge Chart
-      buildGauge(result.wfreq);
+      //buildGauge(result.wfreq);
     });
   }
 
-
-
+//Build Horizontal Bar Chart
 function buildCharts(sample) {
-    d3.json("samples.json").then((data) => {
-      var samples = data.samples;
-      var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
-      var result = resultArray[0];
-  
-      var otu_ids = result.otu_ids;
-      var otu_labels = result.otu_labels;
-      var sample_values = result.sample_values;
+  // Connection to json
+  d3.json("samples.json").then((data) => {
+      
+    var samples = data.samples;
+    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
+    var otu_ids = result.otu_ids;
+    var otu_labels = result.otu_labels;
+    var sample_values = result.sample_values;
 
     var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     var barData = [
@@ -46,7 +42,6 @@ function buildCharts(sample) {
     ];
 
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",
       margin: { t: 30, l: 150 }
     };
 
