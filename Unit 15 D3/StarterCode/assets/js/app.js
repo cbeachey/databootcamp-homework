@@ -21,5 +21,7 @@ var svg = d3
 var chartGroup = svg.append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-var xAxis = 
-var yAxis = 
+
+
+d3.csv("data.csv").then(function(healthData) {
+
