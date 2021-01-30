@@ -34,7 +34,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     data.smokes = +data.smokes;
   });
 
-
+  // Create scale functions
   var xLinearScale = d3.scaleLinear()
       .domain([20, d3.max(healthData, d => d.age)])
       .range([0, width]);
@@ -43,9 +43,11 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .domain([0, d3.max(healthData, d => d.smokes)])
       .range([height, 0]);
 
+  // Create axis functions    
   var bottomAxis = d3.axisBottom(xLinearScale);
   var leftAxis = d3.axisLeft(yLinearScale);
   
+  // Append Axes to the chart
   chartGroup.append("g")
     .attr("transform", `translate(0, ${height})`)
     .call(bottomAxis);
@@ -53,6 +55,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
   chartGroup.append("g")
     .call(leftAxis);
 
+  // Create Circles  
   var circlesGroup = chartGroup.selectAll("circle")
     .data(healthData)
     .enter()
