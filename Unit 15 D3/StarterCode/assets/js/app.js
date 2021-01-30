@@ -18,5 +18,8 @@ var svg = d3
   .attr("height", svgHeight);
 
 
-  var chartGroup = svg.append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+var chartGroup = svg.append("g")
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+var xAxis = 
+var yAxis = 
