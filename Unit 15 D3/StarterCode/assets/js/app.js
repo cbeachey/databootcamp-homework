@@ -61,7 +61,26 @@ d3.csv("data.csv").then(function(healthData) {
     .attr("fill", "pink")
     .attr("opacity", ".5");
 
+  var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([80, -60])
+    .html(function(d) {
+      return (`${d.rockband}<br>Hair length: ${d.age}<br>Hits: ${d.smokes}`);
+    });
+
+  chartGroup.call(toolTip);
+
+  circlesGroup.on("click", function(data) {
+    toolTip.show(data, this);
+  })
+    // onmouseout event
+    .on("mouseout", function(data, index) {
+      toolTip.hide(data);
+    });
 
 
 
+}).catch(function(error) {
+  console.log(error);
 });
+
