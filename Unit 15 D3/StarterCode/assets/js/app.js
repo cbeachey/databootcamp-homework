@@ -66,6 +66,19 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("r", 15)
       .attr("opacity", ".75");
 
+  // Append state text to circles
+   var textGroup = chartGroup.selectAll(".stateText")
+      .data(healthData)
+      .enter()
+      .append("text")
+      .attr("x", d => xLinearScale(d.age))
+      .attr("y", d => yLinearScale(d.smokes*.98))
+      .text(d => (d.abbr))
+      .attr("class", "stateText")
+      .attr("font-size", "12px")
+      .attr("text-anchor", "middle")
+      .attr("fill", "white");
+
   var toolTip = d3.tip()
     .attr("class", "d3-tip")
     .offset([80, -60])
