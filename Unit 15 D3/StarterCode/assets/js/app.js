@@ -56,19 +56,21 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     .call(leftAxis);
 
   // Create Circles  
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(healthData)
-    .enter()
-    .append("circle")
-    .attr("class", "stateCircle")
-    .attr("cx", d => xLinearScale(d.age))
-    .attr("cy", d => yLinearScale(d.smokes));
+  var circlesGroup = chartGroup.selectAll(".stateCircle")
+      .data(healthData)
+      .enter()
+      .append("circle")
+      .attr("cx", d => xLinearScale(d.age))
+      .attr("cy", d => yLinearScale(d.smokes))
+      .attr("class", "stateCircle")
+      .attr("r", 15)
+      .attr("opacity", ".75");
 
   var toolTip = d3.tip()
     .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(d) {
-      return (`${d.rockband}<br>Hair length: ${d.age}<br>Hits: ${d.smokes}`);
+      return (`${d.state}<br>Age: ${d.age}<br>Smokes (%): ${d.smokes}`);
     });
 
   chartGroup.call(toolTip);
@@ -84,8 +86,8 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
 // Axis labels
 chartGroup.append("text")
 .attr("transform", "rotate(-90)")
-.attr("y", 0 - margin.left + 50)
-.attr("x", 0 - (height / 2))
+.attr("y", 0 - margin.left + 0)
+.attr("x", 0 - (height / 1))
 .attr("dy", "1em")
 .attr("class", "axisText")
 .text("Number of Billboard 100 Hits");
