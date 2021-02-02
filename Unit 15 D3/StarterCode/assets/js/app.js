@@ -1,3 +1,4 @@
+// Chart dimensions
 var svgWidth = 960;
 var svgHeight = 500;
 
