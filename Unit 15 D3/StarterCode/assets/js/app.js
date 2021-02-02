@@ -60,14 +60,12 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
     .data(healthData)
     .enter()
     .append("circle")
+    .attr("class", "stateCircle")
     .attr("cx", d => xLinearScale(d.age))
-    .attr("cy", d => yLinearScale(d.smokes))
-    .attr("r", "15")
-    .attr("fill", "pink")
-    .attr("opacity", ".5");
+    .attr("cy", d => yLinearScale(d.smokes));
 
   var toolTip = d3.tip()
-    .attr("class", "tooltip")
+    .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(d) {
       return (`${d.rockband}<br>Hair length: ${d.age}<br>Hits: ${d.smokes}`);
@@ -83,9 +81,21 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       toolTip.hide(data);
     });
 
+// Axis labels
+chartGroup.append("text")
+.attr("transform", "rotate(-90)")
+.attr("y", 0 - margin.left + 50)
+.attr("x", 0 - (height / 2))
+.attr("dy", "1em")
+.attr("class", "axisText")
+.text("Number of Billboard 100 Hits");
 
-
+chartGroup.append("text")
+.attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+.attr("class", "axisText")
+.text("Hair Metal Band Hair Length (inches)");
 }).catch(function(error) {
   console.log(error);
 });
+
 
