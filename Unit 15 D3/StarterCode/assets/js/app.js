@@ -103,7 +103,7 @@ chartGroup.append("text")
 .attr("x", 0 - (height / 2))
 .attr("dy", "1em")
 .attr("class", "axisText")
-.text("Age");
+.text("Age (Median)");
 
 chartGroup.append("text")
 .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
