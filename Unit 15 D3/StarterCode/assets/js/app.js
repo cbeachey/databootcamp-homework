@@ -1,6 +1,7 @@
 var svgWidth = 960;
 var svgHeight = 500;
 
+//Set margins
 var margin = {
   top: 20,
   right: 40,
