@@ -79,6 +79,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
       .attr("text-anchor", "middle")
       .attr("fill", "white");
 
+  //Tooltip
   var toolTip = d3.tip()
     .attr("class", "d3-tip")
     .offset([80, -60])
