@@ -86,15 +86,15 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
 // Axis labels
 chartGroup.append("text")
 .attr("transform", "rotate(-90)")
-.attr("y", 0 - margin.left + 0)
-.attr("x", 0 - (height / 1))
+.attr("y", 0 - margin.left + 05)
+.attr("x", 0 - (height / 2))
 .attr("dy", "1em")
 .attr("class", "axisText")
 .text("Age");
 
 chartGroup.append("text")
 .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
-.attr("class", "axisText")
+.attr("class", "aText")
 .text("Smokes (%)");
 }).catch(function(error) {
   console.log(error);
