@@ -21,14 +21,14 @@ var svg = d3
   .attr("width", svgWidth)
   .attr("height", svgHeight);
 
-
+// Append group
 var chartGroup = svg.append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
 
 // Import Data
 d3.csv("assets/data/data.csv").then(function(healthData) {
 
+  //test data in console log
   console.log(healthData);
 
   // Parse Data/Cast as numbers
