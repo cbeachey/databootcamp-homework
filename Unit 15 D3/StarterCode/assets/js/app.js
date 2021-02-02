@@ -9,6 +9,7 @@ var margin = {
   left: 50
 };
 
+// Chart dimensions
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
