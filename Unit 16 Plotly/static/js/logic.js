@@ -27,7 +27,6 @@ function markerSize(magnitude) {
     return magnitude * 4;
 };
 
-
 // Create markers
 function circleMarkers(feature, latlng ){
 
@@ -42,7 +41,6 @@ function circleMarkers(feature, latlng ){
     }
     return L.circleMarker( latlng, markerOptions );
     };
-
 
 // Grab the data with d3
 d3.json(url, function(response) {
