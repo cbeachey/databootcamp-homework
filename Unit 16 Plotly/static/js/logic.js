@@ -89,4 +89,24 @@ function colors(magnitude) {
 };
 
 
+  // Create legend
+  var info = L.control({
+    position: 'bottomright'
+  });
+
+  // Insert 'legend' div when layer control is added
+  info.onAdd = function(){
+    labels = ['0-1', '1-2', '2-3', '3-4', '4-5', '5+']
+    var div = L.DomUtil.create('div', 'legend');
+    div.innerHTML += '<h3>Magnitude</h3>'
+    for (var i = 0; i <= 5; i++) {
+      div.innerHTML += '<p><span style="font-size:20px; background-color:' + colors(i) +
+        ';">&nbsp;&nbsp;&nbsp;&nbsp;</span> ' + labels[i] + '</p>';
+    }
+    
+    return div;
+  };
+
+  // Add legend
+  info.addTo(myMap);
 
