@@ -71,7 +71,7 @@ d3.json(url, function(response) {
 
 
 
-
+//Colour function based on magnitude
 function colors(magnitude) {
     if (magnitude > 5) {
         return '#FF8C00'
@@ -94,7 +94,7 @@ function colors(magnitude) {
     position: 'bottomright'
   });
 
-  // Insert 'legend' div when layer control is added
+  // Insert 'legend' div 
   info.onAdd = function(){
     labels = ['0-1', '1-2', '2-3', '3-4', '4-5', '5+']
     var div = L.DomUtil.create('div', 'legend');
