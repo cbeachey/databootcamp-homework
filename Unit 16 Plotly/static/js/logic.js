@@ -107,6 +107,6 @@ function colors(magnitude) {
     return div;
   };
 
-  // Add legend
+  // Add legend to map
   info.addTo(myMap);
 
