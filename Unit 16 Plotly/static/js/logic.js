@@ -23,6 +23,7 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // Earthquake layer
 var earthquake = new L.LayerGroup();
 
+// Set marker size by magnitude
 function markerSize(magnitude) {
     return magnitude * 4;
 };
