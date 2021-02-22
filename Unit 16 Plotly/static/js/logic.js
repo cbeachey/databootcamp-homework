@@ -19,35 +19,72 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // URL for Earthquake Data
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson" ;
 
+
+var earthquake = new L.LayerGroup();
+
 function markerSize(magnitude) {
     return magnitude * 4;
 };
 
 
+// Create markers
+function circleMarkers(feature, latlng ){
+
+    // Change the values of the markers
+    var markerOptions = {
+      radius: markerSize(feature.properties.mag),
+      fillColor: colors(feature.properties.mag),
+      color: "black",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    }
+    return L.circleMarker( latlng, markerOptions );
+    };
+
+
 // Grab the data with d3
 d3.json(url, function(response) {
 
-    // Create a new marker cluster group
-    var markers = L.markerClusterGroup();
-  
-    // Loop through data
-    for (var i = 0; i < response.length; i++) {
-  
-      // Set the data location property to a variable
-      var location = response[i].location;
-  
-      // Check for location property
-      if (location) {
-  
-        // Add a new marker to the cluster group and bind a pop-up
-        markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-          .bindPopup(response[i].descriptor));
-      }
-  
+    L.geoJson(response.features, {
+        pointToLayer: function (geoJsonPoint, latlng) {
+            return L.circleMarker(latlng, { radius: markerSize(geoJsonPoint.properties.mag) });
+        },
+
+        style: function (geoJsonFeature) {
+            return {
+                fillColor: Color(geoJsonFeature.properties.mag),
+                fillOpacity: 0.7,
+                weight: 0.1,
+                color: 'black'
+
+            }
+        },
+
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+                "<h4 style='text-align:center;'>" + new Date(feature.properties.time) +
+                "</h4> <hr> <h5 style='text-align:center;'>" + feature.properties.title + "</h5>");
+        }
+    }).addTo(earthquake);
+    createMap(earthquake);
+});
+
+
+
+
+function Color(magnitude) {
+    if (magnitude > 5) {
+        return '#FF8C00'
+    } else if (magnitude > 4) {
+        return 'red'
+    } else if (magnitude > 3) {
+        return 'darkorange'
+    } else if (magnitude > 2) {
+        return 'yellow'
+    } else if (magnitude > 1) {
+        return 'lightyellow'
+    } else {
+        return 'green'
     }
-  
-    // Add our marker cluster layer to the map
-    myMap.addLayer(markers);
-  
-  });
-  
+};
