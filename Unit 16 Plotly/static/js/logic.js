@@ -1,7 +1,7 @@
 // Creating map object
-var myMap = L.map("mapid", {
+var myMap = L.map("map", {
     center: [34.0522, -118.2437],
-    zoom: 8
+    zoom: 5
   });
 
 
@@ -18,7 +18,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // URL for Earthquake Data
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson" ;
-
+var plate_url = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json"
 
 var earthquake = new L.LayerGroup();
 
@@ -53,7 +53,7 @@ d3.json(url, function(response) {
 
         style: function (geoJsonFeature) {
             return {
-                fillColor: Color(geoJsonFeature.properties.mag),
+                fillColor: colors(geoJsonFeature.properties.mag),
                 fillOpacity: 0.7,
                 weight: 0.1,
                 color: 'black'
@@ -66,14 +66,13 @@ d3.json(url, function(response) {
                 "<h4 style='text-align:center;'>" + new Date(feature.properties.time) +
                 "</h4> <hr> <h5 style='text-align:center;'>" + feature.properties.title + "</h5>");
         }
-    }).addTo(earthquake);
-    createMap(earthquake);
+    }).addTo(myMap);
 });
 
 
 
 
-function Color(magnitude) {
+function colors(magnitude) {
     if (magnitude > 5) {
         return '#FF8C00'
     } else if (magnitude > 4) {
@@ -88,3 +87,6 @@ function Color(magnitude) {
         return 'green'
     }
 };
+
+
+
