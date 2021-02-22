@@ -14,10 +14,8 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: API_KEY
   }).addTo(myMap);
 
-
 // URL for Earthquake Data
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson" ;
-
 
 // Earthquake layer
 var earthquake = new L.LayerGroup();
@@ -68,8 +66,6 @@ d3.json(url, function(response) {
     }).addTo(myMap);
 });
 
-
-
 //Colour function based on magnitude
 function colors(magnitude) {
     if (magnitude > 5) {
@@ -86,7 +82,6 @@ function colors(magnitude) {
         return 'green'
     }
 };
-
 
   // Create legend
   var info = L.control({
